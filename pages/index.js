@@ -61,7 +61,7 @@ export default function Home() {
           <p className="text-gray-500 mt-2">Are you interested in using these skills? This is our way of knowing which jobs to match you with. Please take tests for the skills you want to continue using in your next career. Based on your Profile, we marked your top skills with a star</p>
           <div className="flex mt-8 items-center gap-2">
             <FontAwesomeIcon icon={faExclamationCircle} className="text-gray-700" />
-            <p className="text-gray-500"><span className="text-gray-700">Tip:</span> If you're afraid of failing a test, don't worry. You'll be allowed to retake them after 3 months.</p>
+            <p className="text-gray-500"><span className="text-gray-700">Tip:</span> If you&apos;re afraid of failing a test, don&apos;t worry. You&apos;ll be allowed to retake them after 3 months.</p>
           </div>
 
           <p className="font-semibold mt-16">Skill Type</p>
