@@ -22,18 +22,20 @@ export default function Home() {
   const [searchItem, setSearchItem] = useState('')
   return (
     <div className="flex font-kumbh h-screen">
-      <Sidebar active="Turing Test" />
-      <div className="w-3/4 bg-primary-100 px-24 pt-16 pb-8 overflow-scroll">
+      <div className="hidden md:block">
+        <Sidebar active="Turing Test" />
+      </div>
+      <div className="w-full lg:w-3/4 bg-primary-100 px-4 lg:px-24 pt-16 pb-8 overflow-scroll">
         <Stepper />
         <SurveyCard />
         <div className="opacity-50">
-          <div className="flex gap-2 items-center mt-6">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-2 mt-6">
             <p className="text-gray-900 text-2xl font-medium">Pass a tech stack</p>
             <FontAwesomeIcon icon={faLock} className="text-gray-900 text-xl" />
             <p className="text-gray-500 text-sm font-medium mt-2">Take Seniority Assessment to unlock</p>
           </div>
           <p className="text-gray-500 mt-2">Become eligible for Jobs by passing the tests below.</p>
-          <div className="flex mt-6">
+          <div className="flex mt-6 overflow-scroll">
             {pass.map((pass, index) => {
               return (
                 <div key={index} className={`${selected === index ? 'border-b-2 border-blue-500' : ''} flex flex-col gap-2 px-4 py-1`}>
@@ -42,10 +44,10 @@ export default function Home() {
               )
             })}
           </div>
-          <div className="flex items-stretch gap-4 mt-4">
+          <div className="flex flex-wrap items-stretch gap-4 mt-4">
             {pass[selected]?.cards.map((card, index) => {
               return (
-                <div key={index} className="flex flex-col items-center bg-white shadow rounded gap-2 w-40 py-8 cursor-not-allowed">
+                <div key={index} className="flex flex-col items-center bg-white shadow rounded gap-2 w-2/5 lg:w-40 py-8 cursor-not-allowed">
                   <Image src={ReactImg} width={40} height={40} />
                   <p className="text-gray-900 font-medium mt-4">{card.name}</p>
                   <p className="text-gray-500 text-sm font-medium">{card.duration}</p>
@@ -53,7 +55,7 @@ export default function Home() {
               )
             })}
           </div>
-          <div className="flex gap-2 items-center mt-16">
+          <div className="flex flex-col lg:flex-row gap-2 items-center mt-16">
             <p className="text-gray-900 text-2xl font-medium">Take relevant tests</p>
             <FontAwesomeIcon icon={faLock} className="text-gray-900 text-xl" />
             <p className="text-gray-500 text-sm font-medium mt-2">Take Seniority Assessment to unlock</p>
@@ -65,8 +67,8 @@ export default function Home() {
           </div>
 
           <p className="font-semibold mt-16">Skill Type</p>
-          <div className="flex gap-8 items-start w-full mt-4">
-            <div className="flex flex-wrap gap-2 w-2/3">
+          <div className="flex flex-col lg:flex-row gap-8 items-start w-full mt-4">
+            <div className="flex flex-wrap gap-2 lg:w-2/3">
               {['All', 'Skill-Based', 'Backend', 'Containers', 'Data engineering', 'Database', 'DevOps', 'Frontend', 'Hybrid mobile', 'Infrastructure', 'Java', 'Microsoft', 'Mobile', 'Other', 'PHP', 'Python', 'React', 'Soft skills', 'turing test', 'Vue'].map((skill, index) => {
                 return (
                   <div key={index} className="flex items-center gap-2">
@@ -86,7 +88,7 @@ export default function Home() {
                 )
               })}
             </div>
-            <div className="w-1/3">
+            <div className="lg:w-1/3">
               <Paper
                 component="form"
                 className="bg-gray-200 flex items-center rounded border-gray-300 border-1 px-4 text-gray-600"
@@ -103,7 +105,7 @@ export default function Home() {
               </Paper>
             </div>
           </div>
-          <div className="grid grid-cols-5 items-stretch gap-4 mt-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch gap-4 mt-4">
             {skill ? skill.filter(s => s.name.includes(searchItem)).map((card, index) => {
               return (
                 <div key={index} className="flex flex-col items-center bg-white shadow rounded gap-2 py-8 cursor-not-allowed">

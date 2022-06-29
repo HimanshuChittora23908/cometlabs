@@ -102,23 +102,39 @@ export default function StepperComp() {
         }
     }));
 
-
     return (
-        <div className="bg-white px-6 py-8 border-gray-200 border-1 rounded-lg shadow-sm">
-            <p className="text-2xl font-medium mb-8 text-gray-900">Tests Progress <span className="text-gray-400">{percentage}%</span></p>
-            <Box sx={{ width: '100%' }}>
-                <Stepper activeStep={1} alternativeLabel connector={<CustomConnector />}>
-                    {steps.map((label, index) => (
-                        <Step key={index}>
-                            <div className="">
-                                <StepLabel
-                                    StepIconComponent={CustomStepIcon}
-                                >{label}</StepLabel>
-                            </div>
-                        </Step>
-                    ))}
-                </Stepper>
-            </Box>
-        </div>
+        <>
+            <div className="bg-white px-6 py-8 border-gray-200 border-1 rounded-lg shadow-sm hidden lg:block">
+                <p className="text-2xl font-medium mb-8 text-gray-900">Tests Progress <span className="text-gray-400">{percentage}%</span></p>
+                <Box sx={{ width: '100%' }}>
+                    <Stepper activeStep={1} alternativeLabel connector={<CustomConnector />}>
+                        {steps.map((label, index) => (
+                            <Step key={index}>
+                                <div className="">
+                                    <StepLabel
+                                        StepIconComponent={CustomStepIcon}
+                                    >{label}</StepLabel>
+                                </div>
+                            </Step>
+                        ))}
+                    </Stepper>
+                </Box>
+            </div>
+            <div className="block lg:hidden">
+                <p className="text-2xl font-medium mb-8 text-gray-900">Tests Progress <span className="text-gray-400">{percentage}%</span></p>
+                <Box sx={{ maxWidth: 400 }}>
+                    <Stepper activeStep={1} orientation="vertical">
+                        {steps.map((step, index) => (
+                            <Step key={index}>
+                                <StepLabel>
+                                    {step}
+                                </StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                </Box>
+            </div>
+
+        </>
     )
 }
