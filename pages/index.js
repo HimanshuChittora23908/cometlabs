@@ -3,10 +3,13 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+import StepConnector, { stepConnectorClasses } from "@mui/material/StepConnector";
 import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/material/styles";
 import clsx from 'clsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const steps = [
   'Welcome to Turing',
@@ -16,21 +19,32 @@ const steps = [
 ];
 
 export default function Home() {
+  const [percentage, setPercentage] = useState(25);
+
   const useStyles = makeStyles(() => ({
     root: {
-      padding: 6,
+      height: 24,
+      width: 24,
+      margin: -2,
       borderRadius: '50%',
+      backgroundColor: '#eeeeee',
+      border: '2px solid gray',
+      zIndex: '1',
       display: 'flex',
-      backgroundColor: 'gray',
     },
     active: {
-      padding: 6,
       borderRadius: '50%',
-      display: 'flex',
-      backgroundColor: '#1890ff',
+      backgroundColor: '#eeeeee',
+      border: '2px solid #1890ff',
+      margin: 0,
     },
     completed: {
       backgroundColor: '#1890ff',
+      border: 'none',
+      display: 'flex-column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#fff',
     },
     check: {
       fontSize: '12px',
@@ -43,10 +57,10 @@ export default function Home() {
     const { active, completed } = props;
 
     const stepIcons = {
-      1: completed === true ? <FontAwesomeIcon icon={faCheck} className={classes.check} /> : <Box className={active ? classes.active : classes.root} />,
-      2: completed === true ? <FontAwesomeIcon icon={faCheck} className={classes.check} /> : <Box className={active ? classes.active : classes.root} />,
-      3: completed === true ? <FontAwesomeIcon icon={faCheck} className={classes.check} /> : <Box className={active ? classes.active : classes.root} />,
-      4: completed === true ? <FontAwesomeIcon icon={faCheck} className={classes.check} /> : <Box className={active ? classes.active : classes.root} />,
+      1: completed ? <FontAwesomeIcon icon={faCheck} /> : <Box />,
+      2: completed ? <FontAwesomeIcon icon={faCheck} /> : <Box />,
+      3: completed ? <FontAwesomeIcon icon={faCheck} /> : <Box />,
+      4: completed ? <FontAwesomeIcon icon={faCheck} /> : <Box />,
     };
 
     return (
@@ -61,22 +75,48 @@ export default function Home() {
     );
   };
 
+  const CustomConnector = styled(StepConnector)(({ theme }) => ({
+    [`&.${stepConnectorClasses.alternativeLabel}`]: {
+      top: 6,
+      left: "calc(-50%)",
+      right: "calc(50%)",
+      zIndex: 0,
+    },
+    [`&.${stepConnectorClasses.active}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        borderColor: "#1890ff",
+        borderTopWidth: 10,
+      }
+    },
+    [`&.${stepConnectorClasses.completed}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        borderColor: "#1890ff",
+        borderTopWidth: 10,
+      }
+    },
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor:
+        theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
+      borderTopWidth: 10,
+      borderRadius: 1
+    }
+  }));
+
   return (
     <div className="flex">
       <Sidebar />
       <div className="w-4/5 bg-primary-100 px-24 py-16">
         <div className="bg-white px-6 py-4">
-          <p>Test Progress</p>
+          <p className="text-xl font-medium mb-8">Test Progress <span className="text-gray-400">{percentage}%</span></p>
           <Box sx={{ width: '100%' }}>
-            <Stepper activeStep={1} alternativeLabel>
+            <Stepper activeStep={1} alternativeLabel connector={<CustomConnector />}>
               {steps.map((label, index) => (
                 <Step key={index}>
-                  <StepLabel
-                    StepIconComponent={CustomStepIcon}
-                    sx={{
-
-                    }}>{label}</StepLabel>
-                  {/* >{label}</StepLabel> */}
+                  <div className="">
+                    <StepLabel
+                      StepIconComponent={CustomStepIcon}
+                    >{label}</StepLabel>
+                  </div>
                 </Step>
               ))}
             </Stepper>
