@@ -1,3 +1,14 @@
+## Tech Stacks
+- NextJS
+- ReactJS
+- TailwindCSS
+- MUI
+
+### Libraries
+- FontAwesome
+
+https://user-images.githubusercontent.com/75764096/176489836-b8c45097-a291-4b05-8eac-f5899ba978e5.mp4
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
