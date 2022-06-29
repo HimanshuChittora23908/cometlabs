@@ -12,22 +12,22 @@ export default function Profile() {
             <div className="hidden md:block">
                 <Sidebar active="Profile" />
             </div>
-            <div className="w-3/4 bg-primary-100 px-60 pt-16 pb-8 overflow-scroll">
+            <div className="lg:w-3/4 bg-primary-100 px-4 lg:px-60 pt-16 pb-8 overflow-scroll">
                 <div className="bg-white shadow-lg rounded-lg px-8 py-6">
                     <p className="font-semibold text-gray-900 text-lg">Turing</p>
                     <div className="flex flex-col divide-y-1">
-                        <div className="flex items-center justify-between mt-2 py-8">
+                        <div className="flex flex-col lg:flex-row items-center justify-between mt-2 py-8">
                             <div className="flex gap-4 items-center">
                                 <FontAwesomeIcon icon={faFileLines} className="text-gray-900 text-lg" />
                                 <p className="font-semibold text-gray-900">Upload your resume</p>
                             </div>
                             <div className="flex gap-4 items-center">
-                                <p className="text-gray-700">1656332716328_2481483_2020kucp1023.pdf</p>
+                                <p className="text-gray-700 w-40 truncate lg:w-auto">1656332716328_2481483_2020kucp1023.pdf</p>
                                 <FontAwesomeIcon icon={faPen} className="text-gray-300 text-lg hover:bg-gray-100 p-2 rounded-full" />
                             </div>
                         </div>
                         <div className="py-8">
-                            <div className="flex items-center justify-between">
+                            <div className="flex flex-col lg:flex-row items-center justify-between">
                                 <div className="flex gap-8 items-center">
                                     <Image src={Man} alt="profile" width={100} height={100} className="rounded-full overflow-hidden" />
                                     <div className="flex flex-col gap-4">
