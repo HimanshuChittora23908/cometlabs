@@ -9,7 +9,7 @@ import { faGithub, faLinkedin, faLinkedinIn } from "@fortawesome/free-brands-svg
 export default function Profile() {
     return (
         <div className="flex font-kumbh h-screen">
-            <Sidebar />
+            <Sidebar active="Profile" />
             <div className="w-3/4 bg-primary-100 px-60 pt-16 pb-8 overflow-scroll">
                 <div className="bg-white shadow-lg rounded-lg px-8 py-6">
                     <p className="font-semibold text-gray-900 text-lg">Turing</p>

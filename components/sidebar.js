@@ -7,7 +7,7 @@ import Work from "../assets/img/Work.svg";
 import { useRouter } from 'next/router';
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
-export default function Sidebar() {
+export default function Sidebar({ active }) {
     const [isOpen, setIsOpen] = useState(false);
     const [hoverHome, setHoverHome] = useState(false);
     const [hoverProfile, setHoverProfile] = useState(false);
@@ -32,7 +32,7 @@ export default function Sidebar() {
                                 {isOpen ? <p className="font-medium text-gray-700">Available for Jobs</p> : null}
                             </div>
                         </div>
-                        <div className={`${isOpen ? 'pl-6' : ''} py-2 flex gap-2 items-center px-6 w-full hover:bg-gray-200`} onMouseEnter={() => isOpen ? '' : setHoverHome(true)} onMouseLeave={() => isOpen ? '' : setHoverHome(false)}>
+                        <div className={`${isOpen ? 'pl-6' : ''} py-2 flex gap-2 items-center px-6 w-full hover:bg-gray-200 cursor-pointer`} onMouseEnter={() => isOpen ? '' : setHoverHome(true)} onMouseLeave={() => isOpen ? '' : setHoverHome(false)}>
                             <FontAwesomeIcon icon={faHouse} className="text-gray-700 text-lg" />
                             {isOpen ? <p className="text-gray-400">Home</p> : null}
                             {hoverHome ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">
@@ -41,14 +41,14 @@ export default function Sidebar() {
                         </div>
                     </div>
                     <div className={`flex flex-col ${isOpen ? 'items-start' : 'items-center'} gap-1 py-4 h-screen`}>
-                        <div className={`${isOpen ? 'pl-6' : ''} py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200`} onMouseEnter={() => isOpen ? '' : setHoverProfile(true)} onMouseLeave={() => isOpen ? '' : setHoverProfile(false)} onClick={() => router.push('/profile')}>
+                        <div className={`${isOpen ? 'pl-6' : ''} py-2 flex items-center gap-2 px-6 w-full cursor-pointer ${active === "Profile" ? 'bg-gray-200' : 'hover:bg-gray-200'}`} onMouseEnter={() => isOpen ? '' : setHoverProfile(true)} onMouseLeave={() => isOpen ? '' : setHoverProfile(false)} onClick={() => router.push('/profile')}>
                             <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 text-lg py-2" />
                             {isOpen ? <p className="text-gray-400">Profile</p> : null}
                             {hoverProfile ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">
                                 <p className="text-gray-300">Profile</p>
                             </div> : null}
                         </div>
-                        <div className="bg-gray-200 px-6 py-2 flex items-center gap-2 w-full" onMouseEnter={() => isOpen ? '' : setHoverTuringTest(true)} onMouseLeave={() => isOpen ? '' : setHoverTuringTest(false)} onClick={() => router.push('/')}>
+                        <div className={`${active === 'Turing Test' ? 'bg-gray-200' : 'hover:bg-gray-200'} px-6 py-2 flex cursor-pointer items-center gap-2 w-full`} onMouseEnter={() => isOpen ? '' : setHoverTuringTest(true)} onMouseLeave={() => isOpen ? '' : setHoverTuringTest(false)} onClick={() => router.push('/')}>
                             <FontAwesomeIcon icon={faDotCircle} className="text-lg text-green-500" />
                             {isOpen ? <p className="text-gray-700">Turing Test</p> : null}
                             {hoverTuringTest ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">
@@ -64,21 +64,21 @@ export default function Sidebar() {
                     </div>
                     <div className={`flex flex-col justify-between ${isOpen ? 'items-start' : 'items-center'} gap-20 py-4`}>
                         <div className={`flex flex-col ${isOpen ? 'pl-6' : ''} gap-1`}>
-                            <div className={`py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200`} onMouseEnter={() => isOpen ? '' : setHoverDollar(true)} onMouseLeave={() => isOpen ? '' : setHoverDollar(false)}>
+                            <div className={`py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200 cursor-pointer`} onMouseEnter={() => isOpen ? '' : setHoverDollar(true)} onMouseLeave={() => isOpen ? '' : setHoverDollar(false)}>
                                 <FontAwesomeIcon icon={faDollar} className="text-green-500 text-lg" />
                                 {isOpen ? <p className="text-green-500">Refer & Earn $500</p> : null}
                                 {hoverDollar ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">
                                     <p className="text-gray-300">Refer & Earn $500</p>
                                 </div> : null}
                             </div>
-                            <div className="py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200" onMouseEnter={() => isOpen ? '' : setHoverJobs(true)} onMouseLeave={() => isOpen ? '' : setHoverJobs(false)}>
+                            <div className="py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200 cursor-pointer" onMouseEnter={() => isOpen ? '' : setHoverJobs(true)} onMouseLeave={() => isOpen ? '' : setHoverJobs(false)}>
                                 <FontAwesomeIcon icon={faBriefcase} className="text-gray-700 text-lg" />
                                 {isOpen ? <p className="text-gray-400">Jobs</p> : null}
                                 {hoverJobs ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">
                                     <p className="text-gray-300">Jobs</p>
                                 </div> : null}
                             </div>
-                            <div className="py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200" onMouseEnter={() => isOpen ? '' : setHoverSetting(true)} onMouseLeave={() => isOpen ? '' : setHoverSetting(false)}>
+                            <div className="py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200 cursor-pointer" onMouseEnter={() => isOpen ? '' : setHoverSetting(true)} onMouseLeave={() => isOpen ? '' : setHoverSetting(false)}>
                                 <FontAwesomeIcon icon={faUser} className="text-gray-700 text-lg" />
                                 {isOpen ? <p className="text-gray-400">Settings</p> : null}
                                 {hoverSetting ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">
@@ -86,7 +86,7 @@ export default function Sidebar() {
                                 </div> : null}
                             </div>
                         </div>
-                        <div className={`${isOpen ? 'pl-6' : ''} py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200`} onMouseEnter={() => isOpen ? '' : setHoverLogout(true)} onMouseLeave={() => isOpen ? '' : setHoverLogout(false)}>
+                        <div className={`${isOpen ? 'pl-6' : ''} py-2 flex items-center gap-2 px-6 w-full hover:bg-gray-200 cursor-pointer`} onMouseEnter={() => isOpen ? '' : setHoverLogout(true)} onMouseLeave={() => isOpen ? '' : setHoverLogout(false)}>
                             <FontAwesomeIcon icon={faArrowAltCircleLeft} className="text-gray-700 text-lg" />
                             {isOpen ? <p className="text-gray-400">Log Out</p> : null}
                             {hoverLogout ? <div className="absolute bg-gray-700 px-4 py-1 rounded ml-12">

@@ -22,7 +22,7 @@ export default function Home() {
   const [searchItem, setSearchItem] = useState('')
   return (
     <div className="flex font-kumbh h-screen">
-      <Sidebar />
+      <Sidebar active="Turing Test" />
       <div className="w-3/4 bg-primary-100 px-24 pt-16 pb-8 overflow-scroll">
         <Stepper />
         <SurveyCard />
