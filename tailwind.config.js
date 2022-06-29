@@ -13,6 +13,9 @@ module.exports = {
       borderWidth: {
         '1': '1px',
       },
+      fontFamily: {
+        'kumbh': ["Kumbh Sans", "sans-serif"],
+      },
     },
   },
   plugins: [],
