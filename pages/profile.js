@@ -1,4 +1,4 @@
-import Sidebar from "../components/Sidebar"
+import Sidebar from "../components/SideMenu"
 import * as React from 'react';
 import Image from "next/image";
 import Man from "../assets/img/Man.jpg";

@@ -7,7 +7,7 @@ import Work from "../assets/img/Work.svg";
 import { useRouter } from 'next/router';
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
-export default function Sidebar({ active }) {
+export default function SideMenu({ active }) {
     const [isOpen, setIsOpen] = useState(false);
     const [hoverHome, setHoverHome] = useState(false);
     const [hoverProfile, setHoverProfile] = useState(false);

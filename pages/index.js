@@ -1,4 +1,4 @@
-import Sidebar from "../components/Sidebar"
+import Sidebar from "../components/SideMenu"
 import Stepper from "../components/StepperComp"
 import SurveyCard from "../components/SurveyCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
