@@ -6,7 +6,7 @@ import Turing from "../assets/img/Turing.png";
 import Work from "../assets/img/Work.svg";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
-export default function sidebar() {
+export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
